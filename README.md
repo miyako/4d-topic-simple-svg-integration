@@ -132,7 +132,7 @@ End case
 > [!NOTE]
 > [`Is waiting mouse up`](https://developer.4d.com/docs/commands/is-waiting-mouse-up) can only be used in the context of an object method. also `FORM Event.objectName` is `Null` when a mouse event is handled in a form method
 
-* create an input object
+* create an input object and set its expression type to "integer"
 * set data source to `Form.thermo.value`
 * notice the value can go over `100` or under `0`
 
@@ -143,4 +143,27 @@ End case
 ```4d
 Form.thermo.value:=Form.thermo.value<=0 ? 0 : Form.thermo.value
 Form.thermo.value:=Form.thermo.value>=100 ? 100 : Form.thermo.value
+```
+
+## Bidirectional
+
+* implement form event "On Data Change" on the integer input object
+* in the example below, "Image" is the object name of the picture input
+
+```4d
+var $event : Object
+$event:=FORM Event
+
+Case of 
+	: ($event.code=On Data Change)
+		
+		Form.thermo.value:=Num(Form.thermo.value)
+		Form.thermo.value:=Form.thermo.value<=0 ? 0 : Form.thermo.value
+		Form.thermo.value:=Form.thermo.value>=100 ? 100 : Form.thermo.value
+		
+		SVG SET ATTRIBUTE(*; "Image"; "thermo"; "width"; String(Form.thermo.value)+"px")
+		SVG SET ATTRIBUTE(*; "Image"; "thermo"; "height"; "100px")
+		SVG SET ATTRIBUTE(*; "Image"; "thermo"; "fill"; "red")
+		
+End case 
 ```
