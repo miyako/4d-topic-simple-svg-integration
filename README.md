@@ -173,7 +173,7 @@ Case of
 End case 
 ```
 
-## Using a Class
+## Class Implementation
 
 * the sample project includes a form that uses the same pricple for SVG manipulation but in a class
 * the class includes code to change colours and support vertical rendering
