@@ -57,6 +57,7 @@ This tutorial explains how to
   * this is because [the SVG grid](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorials/SVG_from_scratch/Positions#the_grid) cuts through the middle of screen pixels
   * the `shape-rendering` attribute `crispEdges` tells the renderer to prioritise crisp edges over accuracy and anti-aliasing
   * the `vector-effect` attribute `non-scaling-stroke` tell the renderer not to increase the line width when scaling
+  * the `rect` object has an `id` attribute `thermo`. this name can be used by the 4D command `SVG SET ATTRIBUTE` when the picture is displayed on a form
 
 * place the SVG file in /RESOURCES/
 * create a form
