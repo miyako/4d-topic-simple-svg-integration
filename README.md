@@ -4,9 +4,9 @@ How to use interactive SVG on a form
 This tutorial explains how to
 
 * display an SVG on a form
-* make the SVG respond to data change events
 * make the SVG respond to mouse events
-
+* make the SVG respond to data change events
+ 
 ## Setup
 
 * create a text file and save as `thermo.svg`
