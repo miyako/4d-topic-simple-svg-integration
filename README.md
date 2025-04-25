@@ -175,7 +175,7 @@ End case
 
 ## Class Implementation
 
-* the sample project includes a form that uses the same pricple for SVG manipulation but in a class
+* the sample project includes a form that applies the same principle for SVG manipulation but in a class
 * boundaries are defined in the setter function for `value`
 * the setter for `value` assigns a temperature colour from green to red
 * the `drawSvgRect` function supports vertical rendering
