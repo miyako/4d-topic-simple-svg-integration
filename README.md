@@ -131,3 +131,16 @@ End case
 
 > [!NOTE]
 > [`Is waiting mouse up`](https://developer.4d.com/docs/commands/is-waiting-mouse-up) can only be used in the context of an object method. also `FORM Event.objectName` is `Null` when a mouse event is handled in a form method
+
+* create an input object
+* set data source to `Form.thermo.value`
+* notice the value can go over `100` or under `0`
+
+<img src="https://github.com/user-attachments/assets/c6d703f6-c304-4af7-8e72-af9c6eb50ce5" width=200 height=auto />
+
+* add code to set boundaries
+
+```4d
+Form.thermo.value:=Form.thermo.value<=0 ? 0 : Form.thermo.value
+Form.thermo.value:=Form.thermo.value>=100 ? 100 : Form.thermo.value
+```
