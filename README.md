@@ -179,6 +179,7 @@ End case
 * boundaries are defined in the setter function for `value`
 * the setter for `value` assigns a temperature colour from green to red
 * the `drawSvgRect` function supports vertical rendering
+* a native thermometer object is placed on the form for comparison
 
 <img src="https://github.com/user-attachments/assets/f6f3d6ed-f747-4468-bea3-d6a482e523a1" width=400 height=auto />
 
