@@ -168,3 +168,10 @@ Case of
 		
 End case 
 ```
+
+## Class
+
+* the sample project includes a form that uses the same pricple for SVG manipulation but in a class
+* the class includes code to change colours and support vertical rendering
+
+<img src="https://github.com/user-attachments/assets/f6f3d6ed-f747-4468-bea3-d6a482e523a1" width=200 height=auto />
