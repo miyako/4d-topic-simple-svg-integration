@@ -173,7 +173,7 @@ Case of
 End case 
 ```
 
-## Put everything in a Class
+## Using a Class
 
 * the sample project includes a form that uses the same pricple for SVG manipulation but in a class
 * the class includes code to change colours and support vertical rendering
