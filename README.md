@@ -87,6 +87,8 @@ End case
 
 <img src="https://github.com/user-attachments/assets/16a02a17-878d-4a0b-a985-398d4f5732bf" width=200 height=auto />
 
+## Respond to Mouse Click 
+
 * implement form event "On Clicked" in the object method
 
 ```4d
@@ -113,6 +115,8 @@ End case
 
 > [!NOTE]
 > [`GET MOUSE`/`MOUSE POSITION`](https://developer.4d.com/docs/commands/mouse-position) returns local coordinates when called in the context of a mouse event that was generated inside a picture object
+
+## Respond to Mouse Move 
 
 * add the form event "On Mouse Move" to the object method for "On Clicked"
 
@@ -146,7 +150,7 @@ Form.thermo.value:=Form.thermo.value<=0 ? 0 : Form.thermo.value
 Form.thermo.value:=Form.thermo.value>=100 ? 100 : Form.thermo.value
 ```
 
-## Bidirectional
+## Respond to Data Change
 
 * implement form event "On Data Change" on the integer input object
 * in the example below, "Image" is the object name of the picture input
@@ -169,9 +173,71 @@ Case of
 End case 
 ```
 
-## Class
+## Put everything in a Class
 
 * the sample project includes a form that uses the same pricple for SVG manipulation but in a class
 * the class includes code to change colours and support vertical rendering
 
 <img src="https://github.com/user-attachments/assets/f6f3d6ed-f747-4468-bea3-d6a482e523a1" width=400 height=auto />
+
+```4d
+property image : Picture
+property value; _value : Integer
+property color; _color : Text
+
+Class constructor
+	
+	var $thermo : Picture
+	READ PICTURE FILE(File("/RESOURCES/thermo.svg").platformPath; $thermo)
+	
+	This.image:=$thermo
+	This._value:=0
+	This._color:="none"
+	
+Function get color() : Text
+	
+	return This._color
+	
+Function get value() : Integer
+	
+	return This._value
+	
+Function set value($value : Integer) : cs.Thermo
+	
+	$value:=$value<=0 ? 0 : $value
+	$value:=$value>=100 ? 100 : $value
+	
+	This._value:=$value
+	
+	$v:=$value\10
+	
+	$colors:=[\
+	"#00FF00"; \
+	"#33FF00"; \
+	"#66FF00"; \
+	"#99FF00"; \
+	"#CCFF00"; \
+	"#FFFF00"; \
+	"#FFCC00"; \
+	"#FF9900"; \
+	"#FF6600"; \
+	"#FF3300"; \
+	"#FF0000"]  //.reverse()
+	
+	This._color:=$colors[$v]
+	
+Function drawSvgRect($objectName : Text; $id : Text; $vertical : Boolean) : cs.Thermo
+	
+	SVG SET ATTRIBUTE(*; $objectName; $id; "fill"; This.color)
+	
+	If ($vertical)
+		SVG SET ATTRIBUTE(*; $objectName; $id; "width"; "100px")
+		SVG SET ATTRIBUTE(*; $objectName; $id; "height"; String(This.value)+"px")
+		SVG SET ATTRIBUTE(*; $objectName; $id; "y"; String(100-This.value)+"px")
+	Else 
+		SVG SET ATTRIBUTE(*; $objectName; $id; "width"; String(This.value)+"px")
+		SVG SET ATTRIBUTE(*; $objectName; $id; "height"; "100px")
+	End if 
+	
+	return This
+```
