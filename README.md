@@ -114,7 +114,7 @@ End case
 ```
 
 > [!NOTE]
-> [`GET MOUSE`/`MOUSE POSITION`](https://developer.4d.com/docs/commands/mouse-position) can be substituted by the system variables `MOUSEX` and `MOUSEY` which return the local mouse coordinates when called in the context of a mouse event that was generated inside a picture object
+> [`GET MOUSE`/`MOUSE POSITION`](https://developer.4d.com/docs/commands/mouse-position) can be substituted by the system variables `MOUSEX` and `MOUSEY` which return the local mouse coordinates when referenced in the context of a mouse event generated inside a picture object
 
 ## Respond to Mouse Move 
 
